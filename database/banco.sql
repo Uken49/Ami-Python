@@ -48,11 +48,11 @@ dataRegistro date,
 primary key(idRegistro, fkMaquina)
 );
 
-insert into empresa values
-(null, '43669182000109', 'guardian@angel.com', 'Guardian Angel');
+insert into empresa(cnpj, email, nomeEmpresa) values
+('43669182000109', 'guardian@angel.com', 'Guardian Angel');
 
-insert into funcionario(nome, email, senha, fkEmpresa) values 
-('Helder', 'helder@guardian.com', '123', 1);
+insert into funcionario(nome, cpf, email, senha, nivelAcesso, fkEmpresa, fkMaquina) values 
+('Helder', '82114052028', 'helder@guardian.com', '123', 1, 1, 1);
 
-insert into maquina(idMaquina,sistOp,fkEmpresa) values
-(null, "Ubuntu 20.04", 1);
+insert into maquina(sistOp, fkEmpresa, macAdress) values
+("Ubuntu 20.04", 1, "05-30-F6-5C-EC-14");
