@@ -27,6 +27,16 @@ fkMaquina int,
 foreign key (fkMaquina) references maquina (idMaquina)
 );
 
+create table processo(
+idProcesso int auto_increment,
+fkMaquina int,
+nomeProcesso varchar(20),
+usoCpu decimal,
+horaRegistro time,
+dataRegistro date,
+primary key(idProcesso, fkMaquina)
+);
+
 create table registro (
 idRegistro int auto_increment,
 fkMaquina int,

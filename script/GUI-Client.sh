@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script para configurar máquina virtual GUI com o container
+# Script para configurar máquina virtual GUI com o container e Java
 
 # Atualizando os pacotes
 sudo apt update -y && sudo apt upgrade -y
@@ -24,6 +24,12 @@ sudo apt install docker.io -y
 # Iniciando o docker como serviço
 sudo systemctl start docker
 sudo systemctl enable docker
+
+# Instalando o java
+sudo apt-get install openjdk-11-jdk
+
+# Clonando o repositório com a aplicação java
+git clone https://github.com/Guardian-Angel-SPTech/Aplicacao-Java.git
 
 # Clonando o repositório com a aplicação python
 git clone https://github.com/Uken49/Ami-Python.git
