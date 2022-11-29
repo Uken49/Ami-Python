@@ -26,7 +26,7 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Instalando o java
-sudo apt-get install openjdk-11-jdk
+sudo apt-get install openjdk-11-jdk -y
 
 # Clonando o repositório com a aplicação java
 git clone https://github.com/Guardian-Angel-SPTech/Aplicacao-Java.git
