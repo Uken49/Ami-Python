@@ -11,6 +11,7 @@ create table maquina (
 idMaquina int primary key auto_increment,
 sistOp varchar(45),
 fkEmpresa int,
+macAdress varchar(20),
 foreign key (fkEmpresa) references empresa (idEmpresa)
 );
 
