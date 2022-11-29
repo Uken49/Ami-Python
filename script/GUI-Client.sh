@@ -5,9 +5,12 @@
 # Atualizando os pacotes
 sudo apt update -y && sudo apt upgrade -y
 
+echo "Nome do usuário à ser criado: "
+read nome
+
 # Adicionando um usuário e colocando como sudouser 
-sudo adduser urubu100
-sudo usermod -aG ubuntu urubu100
+sudo adduser $nome
+sudo usermod -aG ubuntu $nome
 
 # Instalando a GUI
 sudo apt-get install xrdp lxde-core lxde tigervnc-standalone-server -y
@@ -34,5 +37,5 @@ sudo docker cp ../database/banco.sql BDGuardianAngel:/
 sudo docker exec -i BDGuardianAngel /bin/sh -c 'mysql -u root -purubu100 </banco.sql'
 
 # Criando a imagem e o container da aplicação python
-bash ../build/build.sh
-bash ../build/run.sh
+bash build.sh
+bash run.sh
