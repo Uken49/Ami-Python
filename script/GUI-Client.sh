@@ -46,7 +46,6 @@ sudo docker cp ../database/banco.sql BDGuardianAngel:/
 
 # Executando o script dentro do container
 sudo docker exec -i BDGuardianAngel /bin/sh -c 'mysql -u root -purubu100 </banco.sql'
-sudo docker exec -i BDGuardianAngel /bin/sh -c 'mysql -u root -purubu100 </banco.sql'
 
 # Criando a imagem e o container da aplicação python
 bash build.sh
