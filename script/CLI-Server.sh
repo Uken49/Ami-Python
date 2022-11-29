@@ -36,3 +36,6 @@ sudo docker exec -i BDGuardianAngel /bin/sh -c 'mysql -u root -purubu100 </banco
 # Criando a imagem e o container da aplicação python
 bash build.sh
 bash run.sh
+
+# Retornando ao diretório inicial
+cd ../..
