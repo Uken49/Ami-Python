@@ -5,6 +5,9 @@
 # Atualizando os pacotes
 sudo apt update -y && sudo apt upgrade -y
 
+# Trocando senha do usuário ubuntu
+sudo passwd ubuntu
+
 echo "Nome do usuário à ser criado: "
 read nome
 
