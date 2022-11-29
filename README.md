@@ -24,8 +24,14 @@ bash build.sh
 ~~~
 bash run.sh
 ~~~
+
 ---
 > 5° - Após a criação do container, use o arquivo "script/start.sh" para inicializa-lo
 ~~~
 bash start.sh
+~~~
+
+> 6° - Use o comando "stop" para parar a execução do container
+~~~
+sudo docker stop api_py
 ~~~
