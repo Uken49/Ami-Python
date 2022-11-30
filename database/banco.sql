@@ -53,7 +53,7 @@ insert into empresa(cnpj, email, nomeEmpresa) values
 ('43669182000109', 'guardian@angel.com', 'Guardian Angel');
 
 insert into maquina(sistOp, fkEmpresa, macAdress) values
-("Ubuntu 20.04", (select top(1) idEmpresa from [dbo].[empresa] where cnpj = '43669182000109'), "05-30-F6-5C-EC-14");
+("Ubuntu 20.04", (select top(1) idEmpresa from empresa where cnpj = '43669182000109'), "05-30-F6-5C-EC-14");
 
 insert into funcionario(nome, cpf, email, senha, nivelAcesso, fkEmpresa, fkMaquina) values 
 ('Helder'
@@ -61,6 +61,6 @@ insert into funcionario(nome, cpf, email, senha, nivelAcesso, fkEmpresa, fkMaqui
  , 'helder@guardian.com'
  , '123'
  , 1
- , (select top(1) idEmpresa from [dbo].[empresa] where cnpj = '43669182000109')
- , (select top(1) idMaquina from [dbo].[maquina] where macAdress = '05-30-F6-5C-EC-14')
+ , (select top(1) idEmpresa from empresa where cnpj = '43669182000109')
+ , (select top(1) idMaquina from maquina where macAdress = '05-30-F6-5C-EC-14')
 );
