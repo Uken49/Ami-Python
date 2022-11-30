@@ -26,7 +26,9 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Instalando o java
-sudo apt-get install openjdk-11-jdk -y
+source "/home/ubuntu/.sdkman/bin/sdkman-init.sh"
+curl -s "https://get.skdman.io" | bash
+sdk install java 19-oracle
 
 # Clonando o repositório com a aplicação java
 git clone https://github.com/Guardian-Angel-SPTech/Aplicacao-Java.git
