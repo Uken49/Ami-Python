@@ -93,6 +93,16 @@ while True:
         cursorAzure.execute(sql, data)
         cursorDocker.execute(sql, data)
 
+         # Pegando a porcentagem de bateria
+        bateria = psutil.sensors_battery()
+        print("Porcentagem de bateria: ")
+        print(str(bateria.percent))
+
+        sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES (%s, %s, %s, %s, %s)"
+        data = (1, 4, bateria, hora, dia)
+        cursorAzure.execute(sql, data)
+        cursorDocker.execute(sql, data)
+
     try:
         conexaoAzure.commit()
     except:
