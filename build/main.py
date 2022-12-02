@@ -42,7 +42,7 @@ while True:
     print("Memória RAM sendo utilizada:")
     print(f'{ramU}GB')#usando no momento
 
-    sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES ((SELECT fkMaquina FROM funcionario WHERE nome LIKE '%Helder%'), %s, %s, %s, %s)"
+    sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES (1, %s, %s, %s, %s)"
     data = (1, 1, ramU, hora, dia)
     cursorAzure.execute(sql, data)
     cursorDocker.execute(sql, data)
