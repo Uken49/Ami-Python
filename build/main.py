@@ -42,7 +42,7 @@ while True:
     print("Memória RAM sendo utilizada:")
     print(f'{ramU}GB')#usando no momento
 
-    sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES (%s, %s, %s, %s, %s)"
+    sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES ((SELECT fkMaquina FROM funcionario WHERE nome LIKE '%Helder%'), %s, %s, %s, %s)"
     data = (1, 1, ramU, hora, dia)
     cursorAzure.execute(sql, data)
     cursorDocker.execute(sql, data)
@@ -54,7 +54,6 @@ while True:
     print("Uso da CPU: ")
     print(uso_cpu,'%')
 
-    sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES (%s, %s, %s, %s, %s)"
     data = (1, 2, uso_cpu, hora, dia)
     cursorAzure.execute(sql, data)
     cursorDocker.execute(sql, data)
@@ -71,7 +70,6 @@ while True:
         print('{:.2f}'.format(percentage_disk),"%")
         print("=-="*20)
 
-        sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES (%s, %s, %s, %s, %s)"
         data = (1, 3, percentage_disk, hora, dia)
         cursorAzure.execute(sql, data)
         cursorDocker.execute(sql, data)
@@ -88,20 +86,25 @@ while True:
         print('{:.2f}'.format(percentage_disk),"%")
         print("=-="*20)
 
-        sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES (%s, %s, %s, %s, %s)"
         data = (1, 3, percentage_disk, hora, dia)
         cursorAzure.execute(sql, data)
         cursorDocker.execute(sql, data)
 
-         # Pegando a porcentagem de bateria
-        bateria = psutil.sensors_battery()
-        print("Porcentagem de bateria: ")
-        print(str(bateria.percent))
-
-        sql = "INSERT INTO registro (fkMaquina, componente, registroComponente, horaRegistro, dataRegistro) VALUES (%s, %s, %s, %s, %s)"
-        data = (1, 4, bateria, hora, dia)
-        cursorAzure.execute(sql, data)
-        cursorDocker.execute(sql, data)
+        
+        
+        # Pegando a porcentagem de bateria
+        try:
+          psutil.sensors_battery().percent
+        except:
+          print("=="*20)
+        else:
+            bateria = psutil.sensors_battery()
+            print("Porcentagem de bateria: ")
+            print(str(bateria.percent))
+            
+            data = (1, 4, bateria, hora, dia)
+            cursorAzure.execute(sql, data)
+            cursorDocker.execute(sql, data)
 
     try:
         conexaoAzure.commit()
